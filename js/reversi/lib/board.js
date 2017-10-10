@@ -5,8 +5,19 @@ let Piece = require("./piece");
  * and two white pieces at [3, 3] and [4, 4]
  */
 function _makeGrid () {
-}
+	let grid = new Array(8);
+	for (let i = 0; i < 8; i++){
+		grid[i] = new Array(8);
+	}
 
+	grid[3][4] = new Piece("black");
+	grid[4][3] = new Piece("black");
+	grid[3][3] = new Piece("white");
+	grid[4][4] = new Piece("white");
+
+	return grid;
+}
+ 
 /**
  * Constructs a Board with a starting grid set up.
  */
@@ -25,12 +36,21 @@ Board.DIRS = [
  * throwing an Error if the position is invalid.
  */
 Board.prototype.getPiece = function (pos) {
+	const x = pos[0];
+	const y = pos[1];
+	if (x >= 8 || y >= 8 ){
+		const e = new Error('Not valid pos!');
+		throw e;
+	} else {
+		return this.grid[x][y];
+	}
 };
 
 /**
  * Checks if there are any valid moves for the given color.
  */
 Board.prototype.hasMove = function (color) {
+
 };
 
 /**
@@ -38,12 +58,22 @@ Board.prototype.hasMove = function (color) {
  * matches a given color.
  */
 Board.prototype.isMine = function (pos, color) {
+	let x = pos[0];
+	let y = pos[1];
+	if (this.grid[x][y] && this.grid[x][y].color === color){
+		return true; 
+	} else {
+		return false;
+	}
 };
 
 /**
  * Checks if a given position has a piece on it.
  */
 Board.prototype.isOccupied = function (pos) {
+	let x = pos[0];
+	let y = pos[1];
+	return this.grid[x][y] instanceof Piece;
 };
 
 /**
@@ -51,12 +81,14 @@ Board.prototype.isOccupied = function (pos) {
  * the black player are out of moves.
  */
 Board.prototype.isOver = function () {
+	return this.hasMove("white") || this.hasMove("black");
 };
 
 /**
  * Checks if a given position is on the Board.
  */
 Board.prototype.isValidPos = function (pos) {
+	
 };
 
 /**
