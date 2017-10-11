@@ -3,6 +3,12 @@
 # 	print(line)
 
 def _main_calculation(N, K, p_list):
+	if K == 1:
+		for i in range(N -1):
+			print(0)
+		return 
+
+	# calculate the first K number and return two sub_arrs to track the # of increasing & decreasing subsets and the length of each subset
 	window = first_window(K, p_list)
 	start_idx = 0 
 	end_idx = K - 1
@@ -10,7 +16,7 @@ def _main_calculation(N, K, p_list):
 		if i == 0:
 			output(window["inc"], window["dec"])
 			continue
-		# doesn't account for N == 1	
+	# remove the first number of the previous window from the two sub_arrs
 		if(p_list[start_idx] > p_list[start_idx +1]):
 			window["dec"][0] -= 1
 		if (p_list[start_idx] < p_list[start_idx +1]):
@@ -20,7 +26,7 @@ def _main_calculation(N, K, p_list):
 		if window["dec"] and window["dec"][0] == 0:
 			window["dec"].pop(0)	
 		start_idx += 1
-
+    # add the last number of the current window to the two sub_arrs
 		if(p_list[end_idx] < p_list[end_idx -1]):
 			if (p_list[end_idx + 1] < p_list[end_idx]):
 				window["dec"][-1] += 1
@@ -31,11 +37,23 @@ def _main_calculation(N, K, p_list):
 				window["inc"][-1] += 1
 			if (p_list[end_idx + 1] < p_list[end_idx]):
 				window["dec"].append(2)
+		if(p_list[end_idx] == p_list[end_idx -1]):
+			if (p_list[end_idx + 1] > p_list[end_idx]):
+				window["inc"].append(2)
+			if (p_list[end_idx + 1] < p_list[end_idx]):
+				window["dec"].append(2) 
+
 		end_idx += 1
 
 		output(window["inc"], window["dec"])	
 
 def first_window(K, p_list):
+	"""
+	for example:
+		if the input is [188930 194123 201345]
+		the expected increasing_range_len = [3] (three continously increasing elements)
+		the expected decreasing_range_len = [] (zero continously decreasing element)
+	"""
 	increasing_range_len = []
 	decreasing_range_len = []
 	length = 1
@@ -57,6 +75,7 @@ def first_window(K, p_list):
 	return {"inc": increasing_range_len, "dec": decreasing_range_len}
 
 def output(arr1, arr2):
+	# calculate the subrange and output the difference between increasing subrange & decreasing subrange 
 	increasing_subrange = helper(arr1)
 	decreasing_subrange = helper(arr2)
 	print (increasing_subrange - decreasing_subrange)
@@ -71,7 +90,7 @@ def sub_helper(int):
 	return int * (int - 1) / 2 		
 
 def get_input():
-	file_name = input("Please provide the file name:")
+	file_name = input("Please provide the file name: ")
 	with open(file_name, "r") as f:
 		f_arr = f.readlines()
 		N_K_arr = f_arr[0].split()
