@@ -8,7 +8,6 @@ var s_hour;
 var s_minute;
 var s_second; 
 
-
 const setClock = function(){
 	console.log("set");
 	if (hour){
@@ -57,12 +56,7 @@ const setClockString = function(){
 	s_second = second.toString();
 	} 
 
-	emptyExitingdate();
 	insertNewdate();
-};
-
-const emptyExitingdate = function(){
-	clock.textContent = "";
 };
 
 const insertNewdate = function(){
