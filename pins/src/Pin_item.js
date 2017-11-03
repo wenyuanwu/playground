@@ -10,7 +10,7 @@ class PinItem extends Component {
 		const {pin} = this.props
 		return(
 			<div className="PinItem">
-				<img src={pin.url}></img>
+				<img src={pin.url} alt=""></img>
 			</div>
 		);
 
