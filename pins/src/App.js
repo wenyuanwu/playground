@@ -50,7 +50,10 @@ class App extends Component {
 
     return (
       <div className="App">
+        <img src="https://4.bp.blogspot.com/-J6mqvmXgC3A/WfesP5_vmMI/AAAAAAAAQG4/efOT3IpCMzgegiJVMOH-ve_PhI2nKrfvQCLcBGAs/s1600/Hohenzollern-Castle.jpg"/>
+        <img src="https://4.bp.blogspot.com/-deYqfCSYeaE/WffKouMrWAI/AAAAAAAAQHg/CysYOrynWkIxW7xaqD0-Udba1WqJWuPJACLcBGAs/s1600/Mespelbrunn-Castle-germany-door.jpg"/>
         {pins}
+        <img src="https://2.bp.blogspot.com/-Qx7r2MoLi-4/WffKpR7cU_I/AAAAAAAAQHk/ZubQqQkKzFQu2V-C4wbfJth21D7yuYazwCLcBGAs/s1600/Mespelbrunn-Castle-germany%2B3%2529.jpg"/>
       </div>
     );
   }
