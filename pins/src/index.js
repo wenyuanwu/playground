@@ -1,8 +1,19 @@
+import App from './App';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
+import {Route, HashRouter} from "react-router-dom";
 import registerServiceWorker from './registerServiceWorker';
+import Slider from './Slider';
+import './index.css';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+const Root = () => (
+	<HashRouter>
+		<div>
+			<Route exact path="/" component = {App}/>
+			<Route path="/sliders" component = {Slider}/>
+		</div>
+	</HashRouter>
+);
+
+ReactDOM.render(<Root />, document.getElementById('root'));
 registerServiceWorker();

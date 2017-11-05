@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
 import PinItem from './Pin_item';
+import React, { Component } from 'react';
 import './App.css';
 
 class App extends Component {

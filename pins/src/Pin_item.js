@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {Link} from 'react-router-dom';
 import "./Pin_item.css";
 
 class PinItem extends Component {
@@ -7,10 +8,12 @@ class PinItem extends Component {
 	}
 
 	render(){
-		const {pin} = this.props
+		const {pin} = this.props;
 		return(
 			<div className="PinItem">
-				<img src={pin.url} alt=""></img>
+				<Link to="/sliders">
+				<img src={pin.url} alt="" ></img>
+				</Link>
 			</div>
 		);
 
