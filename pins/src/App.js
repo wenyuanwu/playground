@@ -48,6 +48,8 @@ class App extends Component {
       pins = <div className = "loading"></div>;
     }
 
+    console.log(this.state);
+
     return (
       <div className="App">
         <img src="https://4.bp.blogspot.com/-J6mqvmXgC3A/WfesP5_vmMI/AAAAAAAAQG4/efOT3IpCMzgegiJVMOH-ve_PhI2nKrfvQCLcBGAs/s1600/Hohenzollern-Castle.jpg"/>
